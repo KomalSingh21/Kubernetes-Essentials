@@ -2,12 +2,12 @@
 Lab 1: Kubernetes Operations(kops) on AWS
 =============================================================
 
-##Task 1: Launching an EC2 Instance
+## Task 1: Launching an EC2 Instance
 -----------------------------------------------------------------
 #Launch an EC2 instance using the Ubuntu Server 22.04 LTS (HVM) AMI, and choose the SSD volume type. Select a t2.micro instance for the machine type.
 
 -----------------------------------------------------------------
-##Task 2: Create an IAM role
+## Task 2: Create an IAM role
 -----------------------------------------------------------------
 #Create an IAM role named "kops-admin-role" with the "AdministratorAccess" policy attached.
 
@@ -19,7 +19,7 @@ Lab 1: Kubernetes Operations(kops) on AWS
 
 
 -----------------------------------------------------------------
-##Task 3: Setting up a Kubernetes Cluster
+## Task 3: Setting up a Kubernetes Cluster
 -----------------------------------------------------------------
 # Set the hostname to "kops"
 ```
