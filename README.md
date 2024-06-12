@@ -1,3 +1,9 @@
+Note: At the End of each training day 
+Perform the below steps:
+
+Navigate to the auto-scaling groups on AWS -> Click on the Master ASG -> Edit -> Change the desired, minimum and maximum fields to 0
+Repeat the same for Node ASG.
+
 Lab 1: Kubernetes Operations(kops) on AWS
 =============================================================
 
