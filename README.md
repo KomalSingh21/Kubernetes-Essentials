@@ -122,7 +122,8 @@ Describe Pod using the below command
 kubectl describe pod httpd-pod
 ```
 =====================================================EndofLab2=========================================================================
-Lab 3 : Services in Kubernetes
+============================================================
+Lab 3: Services in Kubernetes
 =============================================================
 ---------------------------------------------------------------
 # Task 1 - Create a file named "httpd-pod.yaml" and add the following YAML for a Pod.
