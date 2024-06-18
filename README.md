@@ -672,7 +672,7 @@ Create a directory:
 ```
 mkdir pvdir && cd pvdir
 ```
-Create a file and add some content into it
+Create a file and add some content to it
 ```
 echo "hello from hostpath" > index.html
 ```
@@ -740,6 +740,11 @@ kubectl delete pod web-app
 ```
 
 ## EmptyDir
+Open a yaml file to create pod using emptyDir
+```
+vi emptydir.yaml
+```
+Press i and copy paste the below code
 ```
 apiVersion: v1
 kind: Pod
@@ -765,6 +770,59 @@ spec:
     volumeMounts:
     - name: emptydir-vol
       mountPath: /data
+```
+To apply the changes:
+```
+kubectl apply -f emptydir.yaml
+```
+Check the node on which the pod is placed:
+```
+kubectl get pods -o wide
+```
+Enter into pod's container 1:
+```
+kubectl exec -it multi-ctr-app -c ctr-1 -- bash
+```
+Move to the directory configured in the yaml file:
+```
+cd /app/
+```
+Create a file and add some content into:
+```
+echo "hello from ctr1" > file.txt
+```
+Create some empty files:
+```
+touch f1 f2
+```
+Verify:
+```
+ls
+```
+```
+exit
+```
+Enter into container 2 to verify the new changes:
+```
+kubectl exec -it multi-ctr-app -c ctr-2 -- bash
+```
+Move to the directory configured in the yaml file:
+```
+cd data
+```
+Verify the new file
+```
+ls
+```
+```
+cat file.txt
+```
+```
+exit
+```
+Delete the pod:
+```
+kubectl delete pod multi-ctr-app
 ```
 ====================================endoflab7============================================
 
