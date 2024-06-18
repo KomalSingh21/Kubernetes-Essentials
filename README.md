@@ -649,7 +649,59 @@ kubectl get pvc
 ```
 kubectl delete pvc --all
 ```
+=============================================endoflab6=========================================
+## Lab 7: HostPath & EmptyDir
 
-
+## HostPath
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: web-app
+  name: web-app
+spec:
+  nodeName:  i-0f68a08663ec4e258
+  volumes:
+  - name: hp-volume
+    hostPath:
+      path: /pvdir
+  containers:
+  - image: nginx
+    name: ctr-1
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: hp-volume
+      mountPath: /usr/share/nginx/html
+```
+## EmptyDir
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: multi-ctr-app
+  name: multi-ctr-app
+spec:
+  volumes:
+  - name: emptydir-vol
+    emptyDir: {}
+  containers:
+  - image: nginx
+    name: ctr-1
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: emptydir-vol
+      mountPath: /app
+  - name: ctr-2
+    image: busybox
+    command: ["sh", "-c", "sleep 5000"]
+    volumeMounts:
+    - name: emptydir-vol
+      mountPath: /data
+```
+====================================endoflab7============================================
 
 
