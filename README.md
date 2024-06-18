@@ -653,6 +653,41 @@ kubectl delete pvc --all
 ## Lab 7: HostPath & EmptyDir
 
 ## HostPath
+check the node count
+```
+kubectl get nodes -o wide
+```
+Choose any of the worker nodes and copy paste their ID,public IP to a nodepad.
+SSH into the worker node:
+```
+ssh ubuntu@publicip
+```
+```
+sudo su
+```
+```
+cd /
+```
+Create a directory:
+```
+mkdir pvdir && cd pvdir
+```
+Create a file and add some content into it
+```
+echo "hello from hostpath" > index.html
+```
+```
+exit
+```
+```
+exit
+```
+
+Make sure you are on the kops jumpserver, create a yaml file:
+```
+vi hostpath.yaml
+```
+Click insert and copy paste the below code:
 ```
 apiVersion: v1
 kind: Pod
@@ -661,7 +696,7 @@ metadata:
     run: web-app
   name: web-app
 spec:
-  nodeName:  i-0f68a08663ec4e258
+  nodeName:  i-0f68a08663ec4e258 // Change the worker node ID (copy paste from the notepad)
   volumes:
   - name: hp-volume
     hostPath:
@@ -675,6 +710,35 @@ spec:
     - name: hp-volume
       mountPath: /usr/share/nginx/html
 ```
+Apply the changes:
+```
+kubectl apply -f hostpath.yaml
+```
+Check the pods:
+```
+kubectl get pods
+```
+To check if the volume is mounted:
+```
+kubectl describe pod web-app
+```
+Note: Check the volume section
+Enter into the pod:
+```
+kubectl exec -it web-app -- bash
+```
+```
+cd usr/share/nginx/html/
+```
+```
+cat index.html
+```
+Note: Notice the information added from the local directory (/pvdir) reflecting within our container.
+Delete the pod:
+```
+kubectl delete pod web-app
+```
+
 ## EmptyDir
 ```
 apiVersion: v1
