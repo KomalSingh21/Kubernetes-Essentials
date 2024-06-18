@@ -804,7 +804,7 @@ exit
 ```
 Enter into container 2 to verify the new changes:
 ```
-kubectl exec -it multi-ctr-app -c ctr-2 -- bash
+kubectl exec -it multi-ctr-app -c ctr-2 -- sh
 ```
 Move to the directory configured in the yaml file:
 ```
