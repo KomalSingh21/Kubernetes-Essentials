@@ -1052,7 +1052,12 @@ kubectl get deploy
 ```
 kubectl get pods
 ```
-
+```
+kubectl delete -f ng-deploy.yaml
+```
+```
+kubectl delete -f sc-claim.yaml
+```
 =====================================endoflab9====================================
 
 
