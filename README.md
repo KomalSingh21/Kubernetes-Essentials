@@ -1063,7 +1063,7 @@ Delete the Kops Cluster:
 ```
  . ./delete-kops.sh
 ```
-
+Terminate the kops jumpserver via the console
 
 
 
