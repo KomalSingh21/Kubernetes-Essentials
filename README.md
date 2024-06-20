@@ -1059,7 +1059,10 @@ kubectl delete -f ng-deploy.yaml
 kubectl delete -f sc-claim.yaml
 ```
 =====================================endoflab9====================================
-
+Delete the Kops Cluster:
+```
+ . ./delete-kops.sh
+```
 
 
 
