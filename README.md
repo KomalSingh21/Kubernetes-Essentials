@@ -1041,6 +1041,9 @@ spec:
         - name: cloud-storage
           mountPath: /usr/share/nginx/html
 ```
+```
+kubectl apply -f ng-deploy.yaml
+```
 ## verify deployment
 
 ```
